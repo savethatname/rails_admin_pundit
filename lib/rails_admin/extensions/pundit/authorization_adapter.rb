@@ -8,7 +8,7 @@ module RailsAdmin
         # See the +authorize_with+ config method for where the initialization happens.
         def initialize(controller)
           @controller = controller
-          @controller.class.send(:alias_method, :pundit_user, :_current_user)
+          #@controller.class.send(:alias_method, :pundit_user, :_current_user)
         end
 
         # This method is called to find authorization policy
