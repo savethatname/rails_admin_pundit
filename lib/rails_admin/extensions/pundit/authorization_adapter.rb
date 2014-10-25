@@ -16,6 +16,7 @@ module RailsAdmin
           begin
             @controller.policy(record)
           rescue ::Pundit::NotDefinedError
+            Rails.logger.debug "PUNDIT USER IS: #{@controller.send(:_current_user)}"
             ::ApplicationPolicy.new(@controller.send(:_current_user), record)
           end
         end
