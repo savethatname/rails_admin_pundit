@@ -29,7 +29,9 @@ module RailsAdmin
         # instance if it is available.
         def authorize(action, abstract_model = nil, model_object = nil)
           record = model_object || abstract_model && abstract_model.model
-          @controller.authorize record
+          if record
+            @controller.authorize record
+          end
           unless policy(record).rails_admin?(action)
             raise ::Pundit::NotAuthorizedError, "not allowed to #{action} this #{record}"
           end
